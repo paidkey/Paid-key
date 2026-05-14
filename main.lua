@@ -49,7 +49,7 @@ Button.MouseButton1Click:Connect(function()
         ScreenGui:Destroy()
 
         loadstring(game:HttpGet(
-            "PASTE YOUR SPEED GUI RAW LINK HERE"
+            "https://pastebin.com/raw/stzDSY53"
         ))()
 
     else
