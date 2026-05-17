@@ -56,7 +56,7 @@ Status.TextColor3 = Color3.new(1,1,1)
 Status.TextScaled = true
 Status.Parent = Frame
 
-Button.MouseButton1Click:Connect(function()
+local function VerifyKey()
 
     local key = Box.Text
     local hwid = game:GetService("RbxAnalyticsService"):GetClientId()
@@ -145,4 +145,12 @@ Status.Text = "Key Valid!"
         "https://pastebin.com/raw/stzDSY53"
     ))()
 
-end)
+end
+
+
+Button.MouseButton1Click:Connect(VerifyKey)
+
+if savedKey and savedKey ~= "" then
+    task.wait(1)
+    VerifyKey()
+end
