@@ -1,3 +1,11 @@
+local KEY_FILE = "JNHH_Key.txt"
+
+local savedKey = nil
+
+if isfile and readfile and isfile(KEY_FILE) then
+    savedKey = readfile(KEY_FILE)
+end
+
 local HttpService = game:GetService("HttpService")
 
 -- SUPABASE
@@ -25,7 +33,7 @@ local Box = Instance.new("TextBox")
 Box.Size = UDim2.new(0.85,0,0,40)
 Box.Position = UDim2.new(0.075,0,0.2,0)
 Box.PlaceholderText = "Enter Key"
-Box.Text = ""
+Box.Text = savedKey or ""
 Box.TextScaled = true
 Box.BackgroundColor3 = Color3.fromRGB(50,50,50)
 Box.TextColor3 = Color3.new(1,1,1)
@@ -122,7 +130,11 @@ Button.MouseButton1Click:Connect(function()
         })
     end
 
-    Status.Text = "Key Valid!"
+    if writefile then
+    writefile(KEY_FILE, key)
+end
+
+Status.Text = "Key Valid!"
 
     task.wait(1)
 
